@@ -23,3 +23,6 @@ print(personality[10])
 what_i_like = "I like Python programming"
 print(what_i_like[2:6])
 print(what_i_like[7:13])
+
+name = "Muhammad Affan" 
+print("Welcome, " + name + "! " * 6) 
