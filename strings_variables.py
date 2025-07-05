@@ -8,9 +8,9 @@ speciality = "Intelligence, loyalty, and strength"
 print(f"{my_favoutite_animal} is my favourite animal because of its {speciality}.")  # This programme prints my favourite animal and the reason why I like it
 
 first_name = "Muhammad Affan"
-last_name = "Ali"
+last_name = "Ali"                          
 full_name = first_name + " " + last_name
-print(full_name)
+print(full_name)                                      # This is my name
 
 say = "Hi "
 print(say * 10)
@@ -18,7 +18,7 @@ print(say * 10)
 personality = "PythonRocks"
 print(personality[0])
 print(personality[3])
-print(personality[10])
+print(personality[10])                           
 
 what_i_like = "I like Python programming"
 print(what_i_like[2:6])
