@@ -1,0 +1,137 @@
+# python-dotenv
+# requests
+
+# import tkinter as tk
+# from tkinter import messagebox
+# import requests
+# from io import BytesIO
+# import os
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+# # Groq API key
+# GROQ_API_KEY = "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"
+
+# # Application settings
+# APP_TITLE = "Brainy"
+# WINDOW_SIZE = "900x700"
+# BG_COLOR = "#FFFFFF"  # White background
+# FONT_WAHAB = ("Arial Black", 30, "bold")
+# FONT_SUB = ("Poppins", 26, "bold")
+# TEXT_COLOR = "#000000"  # Black text
+# INPUT_BG = "#FFFFFF"  # White input background
+# BTN_COLOR = "#000000"  # Black button
+# BTN_HOVER = "#333333"  # Dark gray hover
+# MAIN_FONT = ("Segoe UI", 12)
+# FONT_LOG = ("Courier New", 10, "bold")
+
+# # Local Image in folder (unused in this code)
+# LOCAL_IMAGE_URL = "image.jpg"
+
+# # Validate Student IDs (Range 0001 to 0092)
+# VALID_IDS = [f"{i:04}" for i in range(1, 93)]
+
+# # Button hover effects
+# def on_enter(e):
+#     generate_btn.config(bg=BTN_HOVER)
+
+# def on_leave(e):
+#     generate_btn.config(bg=BTN_COLOR)
+
+# # Validate student ID
+# def validate_student_id(sid):
+#     return sid in VALID_IDS
+
+# # Log messages to the conversation log
+# def log_message(message):
+#     log_output.config(state=tk.NORMAL)
+#     log_output.insert(tk.END, message + "\n")
+#     log_output.see(tk.END)
+#     log_output.config(state=tk.DISABLED)
+
+# # Call Groq API
+# def call_groq_api(student_id, question):
+#     url = "https://api.groq.com/openai/v1/chat/completions"
+#     headers = {
+#         "Authorization": f"Bearer {GROQ_API_KEY}",
+#         "Content-Type": "application/json"
+#     }
+#     prompt = f"Student ID: {student_id}. Question: {question}"
+#     payload = {
+#         "model": "llama3-8b-8192",
+#         "messages": [
+#             {"role": "user", "content": prompt}
+#         ],
+#         "max_tokens": 500
+#     }
+#     try:
+#         response = requests.post(url, headers=headers, json=payload)
+#         response.raise_for_status()
+#         data = response.json()
+#         return data['choices'][0]['message']['content'].strip()
+#     except Exception as e:
+#         return f"Error: {e}"
+
+# # Generate response based on input
+# def generate_script():
+#     student_id = student_id_entry.get().strip()
+#     question = question_input.get("1.0", tk.END).strip()
+#     if not validate_student_id(student_id):
+#         messagebox.showerror("Invalid ID", "Student ID must be between 001 and 092.")
+#         return
+#     if not question:
+#         messagebox.showerror("Missing Question", "Please enter your question.")
+#         return
+#     log_message(f"Asking for student ID {student_id}...\n➡ {question}")
+#     response = call_groq_api(student_id, question)
+#     log_message(f"Response:\n{response}")
+
+# # ========== GUI Setup ==========
+# app = tk.Tk()
+# app.title(APP_TITLE)
+# app.geometry(WINDOW_SIZE)
+# app.configure(bg=BG_COLOR)
+
+# # Title section
+# title_frame = tk.Frame(app, bg=BG_COLOR)
+# title_frame.pack(pady=(10, 0))
+# FONT_META = ("Arial Black", 20, "bold")
+# meta_label = tk.Label(title_frame, text="MY", font=FONT_META, fg=TEXT_COLOR, bg=BG_COLOR)
+# meta_label.pack(side=tk.LEFT)
+# learn_label = tk.Label(title_frame, text="BRAINY", font=FONT_META, fg=TEXT_COLOR, bg=BG_COLOR)
+# learn_label.pack(side=tk.LEFT)
+# sub_label = tk.Label(app, text="Developed by Affan", font=FONT_SUB, fg=TEXT_COLOR, bg=BG_COLOR)
+# sub_label.pack(pady=(0, 20))
+
+# # Main frame
+# main_frame = tk.Frame(app, bg=BG_COLOR)
+# main_frame.pack(fill=tk.BOTH, expand=True)
+
+# # ID input
+# FONT_MAIN = ("Segoe UI", 12)
+# tk.Label(main_frame, text="Enter Student ID (001 to 092):", font=FONT_MAIN, bg=BG_COLOR, fg=TEXT_COLOR).pack(anchor="w", padx=40)
+# student_id_entry = tk.Entry(main_frame, font=FONT_MAIN, bg=INPUT_BG, fg=TEXT_COLOR)
+# student_id_entry.pack(fill=tk.X, padx=40, pady=(0, 20))
+
+# # Question input
+# tk.Label(main_frame, text="Ask or Enter your question:", font=FONT_MAIN, bg=BG_COLOR, fg=TEXT_COLOR).pack(anchor="w", padx=40)
+# question_input = tk.Text(main_frame, height=6, font=FONT_MAIN, bg=INPUT_BG, fg=TEXT_COLOR)
+# question_input.pack(fill=tk.X, padx=40, pady=(0, 20))
+
+# # Send button
+# generate_btn = tk.Button(main_frame, text="Send", font=("Comic Sans MS", 14, "bold"),
+#                          bg=BTN_COLOR, fg="#FFFFFF", relief=tk.FLAT, command=generate_script)
+# generate_btn.pack(pady=(0, 20), ipadx=10)
+# generate_btn.bind("<Enter>", on_enter)
+# generate_btn.bind("<Leave>", on_leave)
+
+# # Log section
+# tk.Label(main_frame, text="Conversation Log:", font=("Comic Sans MS", 14, "bold"),
+#          fg=TEXT_COLOR, bg=BG_COLOR).pack(anchor="w", padx=40)
+# log_output = tk.Text(main_frame, height=12, font=FONT_LOG, bg=INPUT_BG,
+#                      fg=TEXT_COLOR, state=tk.DISABLED, wrap=tk.WORD)
+# log_output.pack(fill=tk.BOTH, padx=40, pady=(5, 20), expand=True)
+
+# # Start the application
+# app.mainloop()
